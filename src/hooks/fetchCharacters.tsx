@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CharactersData, RequestStatus } from '@/types';
 
-function useClassesFetchData(url: string) {
+function useCharacterFetchData(url: string) {
   const [data, setData] = useState<Partial<CharactersData>>({});
   const [status, setStatus] = useState<RequestStatus>('idle');
   const [error, setError] = useState<string | null>(null);
@@ -40,4 +40,4 @@ function useClassesFetchData(url: string) {
   };
 }
 
-export default useClassesFetchData;
+export default useCharacterFetchData;
