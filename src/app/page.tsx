@@ -1,11 +1,6 @@
 'use client';
-
-import Characters from '@/components/characters';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <main>
-      <Characters />
-    </main>
-  );
+  redirect('/characters');
 }
