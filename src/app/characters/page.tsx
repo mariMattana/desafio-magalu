@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { CharactersData } from '@/types';
 import { useCharactersFetchData } from '@/hooks';
 import { CHARACTERS_URL } from '@/constants';
-import { CharactersCard } from '@/components';
+import { CharactersCard, CharactersHead } from '@/components';
 import * as S from '@/styles';
 
 const Characters = () => {
@@ -22,7 +22,8 @@ const Characters = () => {
   const results = charactersData.data?.results || [];
 
   return (
-    <div>
+    <S.CharactersWrapper>
+      <CharactersHead />
       {isLoading ? (
         <h1>... Carregando Dados.....</h1>
       ) : (
@@ -35,7 +36,7 @@ const Characters = () => {
             ))}
         </S.CharactersListWrapper>
       )}
-    </div>
+    </S.CharactersWrapper>
   );
 };
 
