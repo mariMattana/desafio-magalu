@@ -1,3 +1,4 @@
-export * from './charactersCardStyle';
+export * from './characterPageStyles';
+export * from './charactersCardStyles';
 export * from './charactersHeaderStyles';
 export * from './charactersPageStyles';

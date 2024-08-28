@@ -5,6 +5,7 @@ import { routes } from '@/constants';
 import { CharactersData, CharacterIdProps } from '@/types';
 import { useCharactersFetchData } from '@/hooks';
 import { CHARACTERS_ID_URL } from '@/constants';
+import * as S from '@/styles';
 
 const Character = ({ params }: CharacterIdProps) => {
   const { data, isLoading } = useCharactersFetchData(
@@ -29,14 +30,19 @@ const Character = ({ params }: CharacterIdProps) => {
   };
 
   return (
-    <div>
-      {isLoading ? (
-        <h1>... Carregando Personagem.....</h1>
-      ) : (
-        <h3>{result && result.name}</h3>
-      )}
-      <button onClick={goToHome}>home</button>
-    </div>
+    <>
+      <S.CharacterBackgroundWrapper>
+        {result && result.name}
+      </S.CharacterBackgroundWrapper>
+      <S.CharacterContentWrapper>
+        {isLoading ? (
+          <h1>... Carregando Personagem.....</h1>
+        ) : (
+          <h3>{result && result.name}</h3>
+        )}
+        <button onClick={goToHome}>home</button>
+      </S.CharacterContentWrapper>
+    </>
   );
 };
 
