@@ -1,9 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { CharactersData } from '@/types';
 import { useCharactersFetchData } from '@/hooks';
 import { CHARACTERS_URL } from '@/constants';
+import { CharactersCard } from '@/components';
+import * as S from '@/styles';
 
 const Characters = () => {
   const { data, isLoading } = useCharactersFetchData(CHARACTERS_URL);
@@ -11,12 +12,6 @@ const Characters = () => {
   const [charactersData, setCharactersData] = useState<Partial<CharactersData>>(
     {},
   );
-
-  const router = useRouter();
-
-  const handleClick = (id: string) => {
-    router.push(`/characters/${id}`);
-  };
 
   useEffect(() => {
     if (!isLoading && data.data?.results) {
@@ -31,16 +26,14 @@ const Characters = () => {
       {isLoading ? (
         <h1>... Carregando Dados.....</h1>
       ) : (
-        <ul>
+        <S.CharactersListWrapper>
           {results.length > 0 &&
             results.map((item) => (
-              <li key={item.id}>
-                <button onClick={() => handleClick(item.id)}>
-                  {item.name}
-                </button>
-              </li>
+              <S.CharactersListItemsWrapper key={item.id}>
+                <CharactersCard character={item} />
+              </S.CharactersListItemsWrapper>
             ))}
-        </ul>
+        </S.CharactersListWrapper>
       )}
     </div>
   );
