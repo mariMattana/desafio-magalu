@@ -17,6 +17,7 @@ export const CharactersCardInfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
+  align-items: center;
 `;
 
 export const CharactersCardInfoText = styled.p`

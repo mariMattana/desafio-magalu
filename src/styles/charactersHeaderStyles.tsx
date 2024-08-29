@@ -33,39 +33,33 @@ export const CharactersHeaderTitleImage = styled.div`
   margin-bottom: 20px;
 `;
 
-export const CharactersHeaderSearchWrapper = styled.div`
-  background-color: #fdecec;
-  margin: 30px 0;
-  padding: 10px;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 50px;
-`;
-
-export const CharactersHeaderSearchImage = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-`;
-
-export const CharactersHeaderSearchInput = styled.input`
-  border: none;
-  background: none;
-  background-color: inherit;
-  outline: none;
-  padding: 5px;
-  width: 100%;
-  &::placeholder {
-    color: #fc7474;
-  }
-`;
-
 export const CharactersHeaderFiltersWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+`;
+
+export const CharactersHeaderFoundText = styled.p`
+  color: #d1d1d1;
+`;
+
+export const CharactersHeaderFilters = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+`;
+
+export const CharactersHeaderFiltersImage = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justifycontent: center;
-  padding: 20px;
+  gap: 10px;
+`;
+
+export const CharactersHeaderFiltersText = styled.p`
+  color: #fc7474;
 `;
