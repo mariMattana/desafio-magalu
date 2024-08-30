@@ -21,5 +21,11 @@ export const CharacterContentWrapper = styled.div`
   z-index: 1;
   color: white; /* Main content text color */
   text-align: center;
-  padding: 20px;
+  padding: 0 50px;
+`;
+
+export const CharacterHeaderWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
 `;

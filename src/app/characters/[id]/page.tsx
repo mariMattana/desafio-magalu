@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CharactersSearch } from '@/components';
+import { CharacterHead } from '@/components';
 import { CharactersData, CharacterIdProps } from '@/types';
 import { useCharactersFetchData } from '@/hooks';
 import { CHARACTERS_ID_URL, routes } from '@/constants';
@@ -35,7 +35,7 @@ const Character = ({ params }: CharacterIdProps) => {
         {result && result.name}
       </S.CharacterBackgroundWrapper>
       <S.CharacterContentWrapper>
-        <CharactersSearch $primary />
+        <CharacterHead />
         {isLoading ? (
           <h1>... Carregando Personagem.....</h1>
         ) : (
