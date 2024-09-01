@@ -16,12 +16,12 @@ export const CharacterBackgroundWrapper = styled.div`
   z-index: -1;
 `;
 
-export const CharacterContentWrapper = styled.div`
+export const CharacterContentPosition = styled.div`
   position: relative;
   z-index: 1;
   color: white; /* Main content text color */
   text-align: center;
-  padding: 0 50px;
+  padding: 0 5vw;
 `;
 
 export const CharacterHeaderWrapper = styled.div`

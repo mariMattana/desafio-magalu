@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CharacterHead } from '@/components';
+import { CharacterHead, CharacterContent } from '@/components';
 import { CharactersData, CharacterIdProps } from '@/types';
 import { useCharactersFetchData } from '@/hooks';
 import { CHARACTERS_ID_URL, routes } from '@/constants';
@@ -30,20 +30,24 @@ const Character = ({ params }: CharacterIdProps) => {
   };
 
   return (
-    <>
-      <S.CharacterBackgroundWrapper>
-        {result && result.name}
-      </S.CharacterBackgroundWrapper>
-      <S.CharacterContentWrapper>
-        <CharacterHead />
-        {isLoading ? (
-          <h1>... Carregando Personagem.....</h1>
-        ) : (
-          <h3>{result && result.name}</h3>
-        )}
-        <button onClick={goToHome}>home</button>
-      </S.CharacterContentWrapper>
-    </>
+    <div>
+      {result ? (
+        <>
+          <S.CharacterBackgroundWrapper>
+            {result.name}
+          </S.CharacterBackgroundWrapper>
+          <S.CharacterContentPosition>
+            <CharacterHead />
+            <CharacterContent character={result} />
+            <button onClick={goToHome}>home</button>
+          </S.CharacterContentPosition>
+        </>
+      ) : isLoading ? (
+        <div>Carregando personagem</div>
+      ) : (
+        <div>Nenhum personagem encontrado</div>
+      )}
+    </div>
   );
 };
 
