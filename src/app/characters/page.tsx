@@ -1,13 +1,13 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { CharactersData } from '@/types';
-import { useCharactersFetchData } from '@/hooks';
+import { useFetchData } from '@/hooks';
 import { CHARACTERS_URL } from '@/constants';
 import { CharactersCard, CharactersHead } from '@/components';
 import * as S from '@/styles';
 
 const Characters = () => {
-  const { data, isLoading } = useCharactersFetchData(CHARACTERS_URL);
+  const { data, isLoading } = useFetchData<CharactersData>(CHARACTERS_URL);
 
   const [charactersData, setCharactersData] = useState<Partial<CharactersData>>(
     {},

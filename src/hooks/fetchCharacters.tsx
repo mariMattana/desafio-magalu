@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { CharactersData, RequestStatus } from '@/types';
 
-function useCharacterFetchData(url: string) {
-  const [data, setData] = useState<Partial<CharactersData>>({});
+type RequestStatus = 'idle' | 'fetching' | 'fetched' | 'error';
+
+function useFetchData<T>(url: string) {
+  const [data, setData] = useState<Partial<T>>({});
   const [status, setStatus] = useState<RequestStatus>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -14,7 +15,7 @@ function useCharacterFetchData(url: string) {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const result = await response.json();
+        const result: T = await response.json();
         setData(result);
         setStatus('fetched');
       } catch (err) {
@@ -40,4 +41,4 @@ function useCharacterFetchData(url: string) {
   };
 }
 
-export default useCharacterFetchData;
+export default useFetchData;

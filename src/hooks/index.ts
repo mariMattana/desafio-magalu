@@ -1,3 +1,3 @@
-import useCharactersFetchData from './fetchCharacters';
+import useFetchData from './fetchCharacters';
 
-export { useCharactersFetchData };
+export { useFetchData };
