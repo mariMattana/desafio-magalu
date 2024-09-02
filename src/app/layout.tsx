@@ -1,13 +1,9 @@
-import type { Metadata } from 'next';
+'use client';
 import { Inter } from 'next/font/google';
+import { MyStateProvider } from './stateProvider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Desafio Magalu',
-  description: 'Desafio Magalu Frontend',
-};
 
 export default function RootLayout({
   children,
@@ -16,7 +12,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>Desafio Magalu</title>
+        <meta name='description' content='Desafio Magalu Frontend' />
+        <meta property='og:image' content='/assets/ic_heroi.svg' />
+      </head>
+      <body className={inter.className}>
+        <MyStateProvider>{children}</MyStateProvider>
+      </body>
     </html>
   );
 }
