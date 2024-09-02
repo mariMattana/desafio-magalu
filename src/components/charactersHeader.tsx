@@ -7,6 +7,8 @@ export const CharactersHead: React.FC<CharactersHeadProps> = ({
   toggleOrderBy,
   orderBy,
   onSearch,
+  toggleFavorites,
+  showFavorites,
 }) => {
   const toggle = '/assets/toggle_on.svg';
 
@@ -40,7 +42,7 @@ export const CharactersHead: React.FC<CharactersHeadProps> = ({
             </S.CharactersHeaderFiltersText>
           </S.CharactersHeaderFiltersImage>
           <Image src={toggle} alt='toggle button' width={70} height={70} />
-          <S.CharactersHeaderFiltersImage>
+          <S.CharactersHeaderFiltersImage onClick={toggleFavorites}>
             <Image
               src={'/assets/favorito_01.svg'}
               alt='Favorite Logo'
@@ -48,7 +50,7 @@ export const CharactersHead: React.FC<CharactersHeadProps> = ({
               height={15}
             />
             <S.CharactersHeaderFiltersText>
-              Somente favoritos
+              {showFavorites ? 'Todos personagens' : 'Somente favoritos'}
             </S.CharactersHeaderFiltersText>
           </S.CharactersHeaderFiltersImage>
         </S.CharactersHeaderFilters>

@@ -81,4 +81,6 @@ export interface CharactersHeadProps {
   toggleOrderBy: () => void;
   orderBy: string;
   onSearch: (text: string) => void;
+  toggleFavorites: () => void;
+  showFavorites: boolean;
 }

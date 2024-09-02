@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import { CharactersData } from '@/types';
-import { useFetchData } from '@/hooks';
+import { useFavorites, useFetchData } from '@/hooks';
 import { CHARACTERS_URL } from '@/constants';
 import { CharactersCard, CharactersHead } from '@/components';
 import * as S from '@/styles';
@@ -10,6 +10,9 @@ const Characters = () => {
   const [url, setUrl] = useState(CHARACTERS_URL);
   const [orderBy, setOrderBy] = useState('name');
   const [searchText, setSearchText] = useState('');
+  const { favorites } = useFavorites();
+
+  const [showFavorites, setShowFavorites] = useState<boolean>(false);
 
   const { data, isLoading } = useFetchData<CharactersData>(url);
 
@@ -24,6 +27,10 @@ const Characters = () => {
   }, [data, isLoading]);
 
   const results = charactersData.data?.results || [];
+
+  const filteredResults = showFavorites
+    ? results.filter((item) => favorites.includes(item.id))
+    : results;
 
   useEffect(() => {
     if (searchText) {
@@ -43,19 +50,25 @@ const Characters = () => {
     setUrl(`${CHARACTERS_URL}&orderBy=${newOrderBy}`);
   }, [orderBy]);
 
+  const handleToggleFavorites = () => {
+    setShowFavorites(!showFavorites);
+  };
+
   return (
     <S.CharactersWrapper>
       <CharactersHead
         toggleOrderBy={toggleOrderBy}
         orderBy={orderBy}
         onSearch={handleSearch}
+        toggleFavorites={handleToggleFavorites}
+        showFavorites={showFavorites}
       />
       {isLoading ? (
         <h1>... Carregando Dados.....</h1>
       ) : (
         <S.CharactersListWrapper>
-          {results.length > 0 &&
-            results.map((item) => (
+          {filteredResults.length > 0 &&
+            filteredResults.map((item) => (
               <S.CharactersListItemsWrapper key={item.id}>
                 <CharactersCard character={item} />
               </S.CharactersListItemsWrapper>
