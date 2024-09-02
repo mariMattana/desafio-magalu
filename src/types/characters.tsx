@@ -80,4 +80,5 @@ export type CharactersData = {
 export interface CharactersHeadProps {
   toggleOrderBy: () => void;
   orderBy: string;
+  onSearch: (text: string) => void;
 }

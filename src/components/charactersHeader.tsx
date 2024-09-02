@@ -7,6 +7,7 @@ import * as S from '@/styles';
 export const CharactersHead: React.FC<CharactersHeadProps> = ({
   toggleOrderBy,
   orderBy,
+  onSearch,
 }) => {
   const toggle = '/assets/toggle_on.svg';
 
@@ -22,7 +23,7 @@ export const CharactersHead: React.FC<CharactersHeadProps> = ({
           você ama - e aqueles que você descobrirá em breve!
         </S.CharactersHeaderText>
       </S.CharactersHeaderTitleWrapper>
-      <CharactersSearch $primary={false} />
+      <CharactersSearch $primary={false} onSearch={onSearch} />
       <S.CharactersHeaderFiltersWrapper>
         <S.CharactersHeaderFoundText>
           Encontrados 20 heróis

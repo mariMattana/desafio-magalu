@@ -9,6 +9,7 @@ import * as S from '@/styles';
 const Characters = () => {
   const [url, setUrl] = useState(CHARACTERS_URL);
   const [orderBy, setOrderBy] = useState('name');
+  const [searchText, setSearchText] = useState('');
 
   const { data, isLoading } = useFetchData<CharactersData>(url);
 
@@ -24,6 +25,18 @@ const Characters = () => {
 
   const results = charactersData.data?.results || [];
 
+  useEffect(() => {
+    if (searchText) {
+      setUrl(`${CHARACTERS_URL}&nameStartsWith=${searchText}`);
+    } else {
+      setUrl(CHARACTERS_URL);
+    }
+  }, [searchText]);
+
+  const handleSearch = (text: string) => {
+    setSearchText(text);
+  };
+
   const toggleOrderBy = useCallback(() => {
     const newOrderBy = orderBy === 'name' ? '-name' : 'name';
     setOrderBy(newOrderBy);
@@ -32,7 +45,11 @@ const Characters = () => {
 
   return (
     <S.CharactersWrapper>
-      <CharactersHead toggleOrderBy={toggleOrderBy} orderBy={orderBy} />
+      <CharactersHead
+        toggleOrderBy={toggleOrderBy}
+        orderBy={orderBy}
+        onSearch={handleSearch}
+      />
       {isLoading ? (
         <h1>... Carregando Dados.....</h1>
       ) : (
