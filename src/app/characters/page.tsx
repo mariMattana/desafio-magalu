@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { CharactersData } from '@/types';
 import { useFetchData } from '@/hooks';
 import { CHARACTERS_URL } from '@/constants';
@@ -7,7 +7,10 @@ import { CharactersCard, CharactersHead } from '@/components';
 import * as S from '@/styles';
 
 const Characters = () => {
-  const { data, isLoading } = useFetchData<CharactersData>(CHARACTERS_URL);
+  const [url, setUrl] = useState(CHARACTERS_URL);
+  const [orderBy, setOrderBy] = useState('name');
+
+  const { data, isLoading } = useFetchData<CharactersData>(url);
 
   const [charactersData, setCharactersData] = useState<Partial<CharactersData>>(
     {},
@@ -21,9 +24,15 @@ const Characters = () => {
 
   const results = charactersData.data?.results || [];
 
+  const toggleOrderBy = useCallback(() => {
+    const newOrderBy = orderBy === 'name' ? '-name' : 'name';
+    setOrderBy(newOrderBy);
+    setUrl(`${CHARACTERS_URL}&orderBy=${newOrderBy}`);
+  }, [orderBy]);
+
   return (
     <S.CharactersWrapper>
-      <CharactersHead />
+      <CharactersHead toggleOrderBy={toggleOrderBy} orderBy={orderBy} />
       {isLoading ? (
         <h1>... Carregando Dados.....</h1>
       ) : (

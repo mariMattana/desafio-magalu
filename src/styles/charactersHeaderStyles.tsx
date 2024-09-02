@@ -52,12 +52,20 @@ export const CharactersHeaderFilters = styled.div`
   gap: 30px;
 `;
 
-export const CharactersHeaderFiltersImage = styled.div`
+export const CharactersHeaderFiltersImage = styled.button`
+  border: none;
+  background: inherit;
+  font-size: inherit;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const CharactersHeaderFiltersText = styled.p`

@@ -76,3 +76,8 @@ export type CharactersData = {
   };
   etag: 'string';
 };
+
+export interface CharactersHeadProps {
+  toggleOrderBy: () => void;
+  orderBy: string;
+}

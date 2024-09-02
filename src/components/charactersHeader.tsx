@@ -1,8 +1,13 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { CharactersSearch } from '@/components';
+import { CharactersHeadProps } from '@/types';
 import * as S from '@/styles';
 
-export const CharactersHead = () => {
+export const CharactersHead: React.FC<CharactersHeadProps> = ({
+  toggleOrderBy,
+  orderBy,
+}) => {
   const toggle = '/assets/toggle_on.svg';
 
   return (
@@ -30,8 +35,8 @@ export const CharactersHead = () => {
               width={15}
               height={15}
             />
-            <S.CharactersHeaderFiltersText>
-              Ordenar por nome - A/Z
+            <S.CharactersHeaderFiltersText onClick={toggleOrderBy}>
+              Ordenar por nome - {orderBy === 'name' ? 'A/Z' : 'Z/A'}
             </S.CharactersHeaderFiltersText>
           </S.CharactersHeaderFiltersImage>
           <Image src={toggle} alt='toggle button' width={70} height={70} />
