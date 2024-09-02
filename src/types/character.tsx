@@ -69,4 +69,10 @@ export type CharacterData = {
 
 export interface CharacterProps {
   character: CharacterData;
+  modifiedDate?: Date | null;
 }
+
+export type CharacterId = {
+  characterId: string;
+  setModifiedDate: (date: Date) => void;
+};
