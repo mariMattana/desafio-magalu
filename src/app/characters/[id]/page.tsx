@@ -1,20 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { CharacterHead, CharacterContent } from '@/components';
+import { CharacterHead, CharacterContent, CharacterComics } from '@/components';
 import { CharactersData, CharacterIdProps } from '@/types';
-import { useCharactersFetchData } from '@/hooks';
-import { CHARACTERS_ID_URL, routes } from '@/constants';
+import { useFetchData } from '@/hooks';
+import { CHARACTERS_ID_URL } from '@/constants';
 import * as S from '@/styles';
 
 const Character = ({ params }: CharacterIdProps) => {
-  const { data, isLoading } = useCharactersFetchData(
+  const { data, isLoading } = useFetchData<CharactersData>(
     CHARACTERS_ID_URL(params.id),
   );
 
   const [charactersData, setCharactersData] = useState<Partial<CharactersData>>(
     {},
   );
+  const [modifiedDate, setModifiedDate] = useState<Date | null>(null);
 
   useEffect(() => {
     if (!isLoading && data.data?.results) {
@@ -23,11 +23,6 @@ const Character = ({ params }: CharacterIdProps) => {
   }, [data, isLoading]);
 
   const result = charactersData.data?.results[0];
-
-  const router = useRouter();
-  const goToHome = () => {
-    router.push(routes.characters);
-  };
 
   return (
     <div>
@@ -38,8 +33,11 @@ const Character = ({ params }: CharacterIdProps) => {
           </S.CharacterBackgroundWrapper>
           <S.CharacterContentPosition>
             <CharacterHead />
-            <CharacterContent character={result} />
-            <button onClick={goToHome}>home</button>
+            <CharacterContent character={result} modifiedDate={modifiedDate} />
+            <CharacterComics
+              characterId={result.id}
+              setModifiedDate={setModifiedDate}
+            />
           </S.CharacterContentPosition>
         </>
       ) : isLoading ? (

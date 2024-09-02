@@ -3,9 +3,21 @@ import { RatingComponent } from '@/components';
 import { CharacterProps } from '@/types';
 import * as S from '@/styles';
 
-export const CharacterContent: React.FC<CharacterProps> = ({ character }) => {
+export const CharacterContent: React.FC<CharacterProps> = ({
+  character,
+  modifiedDate,
+}) => {
   const favorite = '/assets/favorito_01.svg';
   const { name, description, comics, stories, thumbnail } = character;
+  const lastComic = modifiedDate
+    ? modifiedDate
+        .toLocaleDateString('pt-BR', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        })
+        .replace(/de /g, '')
+    : '';
   return (
     <S.CharacterContentWrapper>
       <S.CharacterContent>
@@ -42,10 +54,10 @@ export const CharacterContent: React.FC<CharacterProps> = ({ character }) => {
             </S.CharacterContentComicsMov>
           </S.CharacterComicsMovWrapper>
           <S.CharacterComicsMovRat>
-            <p>Rating: </p>
+            <S.CharacterText>Rating: </S.CharacterText>
             <RatingComponent rating={3} />
           </S.CharacterComicsMovRat>
-          <p>Últimos quadrinhos: 13 fev. 2020</p>
+          <S.CharacterText>{`Último quadrinho: ${lastComic}`}</S.CharacterText>
         </div>
       </S.CharacterContent>
       <S.CharacterImageWrapper>

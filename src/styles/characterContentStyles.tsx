@@ -9,7 +9,6 @@ export const CharacterContentWrapper = styled.div`
 
 export const CharacterContent = styled.div`
   padding: 0 2vw;
-  margin-right: 60px;
   text-align: left;
 `;
 
@@ -47,4 +46,8 @@ export const CharacterComicsMovRat = styled.div`
 export const CharacterImageWrapper = styled.div`
   position: relative;
   right: 15%;
+`;
+
+export const CharacterText = styled.p`
+  font-size: 14px;
 `;
