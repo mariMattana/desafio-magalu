@@ -44,8 +44,8 @@ export const CharacterComicsMovRat = styled.div`
 `;
 
 export const CharacterImageWrapper = styled.div`
+  width: 65%;
   position: relative;
-  right: 15%;
 `;
 
 export const CharacterText = styled.p`

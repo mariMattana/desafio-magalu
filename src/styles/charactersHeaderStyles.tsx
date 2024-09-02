@@ -71,3 +71,10 @@ export const CharactersHeaderFiltersImage = styled.button`
 export const CharactersHeaderFiltersText = styled.p`
   color: #fc7474;
 `;
+
+export const FavoriteButton = styled.button`
+  border: none;
+  background: inherit;
+  font-size: inherit;
+  cursor: pointer;
+`;

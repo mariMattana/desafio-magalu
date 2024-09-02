@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { RatingComponent } from '@/components';
+import { useFavorites } from '@/hooks';
 import { CharacterProps } from '@/types';
 import * as S from '@/styles';
 
@@ -7,8 +8,14 @@ export const CharacterContent: React.FC<CharacterProps> = ({
   character,
   modifiedDate,
 }) => {
-  const favorite = '/assets/favorito_01.svg';
-  const { name, description, comics, stories, thumbnail } = character;
+  const { id, name, description, comics, stories, thumbnail } = character;
+
+  const { favorites, updateFavorite } = useFavorites();
+
+  const favorite = favorites.includes(id)
+    ? '/assets/favorito_01.svg'
+    : '/assets/favorito_02.svg';
+
   const lastComic = modifiedDate
     ? modifiedDate
         .toLocaleDateString('pt-BR', {
@@ -23,7 +30,15 @@ export const CharacterContent: React.FC<CharacterProps> = ({
       <S.CharacterContent>
         <S.CharacterContentNameFav>
           <h3>{name.toUpperCase()}</h3>
-          <Image src={favorite} alt='Hero Logo' width={40} height={40} />
+          <S.FavoriteButton onClick={() => updateFavorite(id)}>
+            <Image
+              src={favorite}
+              alt='favorito'
+              width={40}
+              height={40}
+              priority
+            />
+          </S.FavoriteButton>
         </S.CharacterContentNameFav>
         <p>{description}</p>
         <div>

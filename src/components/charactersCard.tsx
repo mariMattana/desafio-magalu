@@ -2,28 +2,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { CharacterProps } from '@/types';
+import { useFavorites } from '@/hooks';
 import * as S from '@/styles';
 
 export const CharactersCard: React.FC<CharacterProps> = ({ character }) => {
   const router = useRouter();
+  const { id, name, thumbnail } = character;
+
+  const { favorites, updateFavorite } = useFavorites();
 
   const handleClick = (id: string) => {
     router.push(`/characters/${id}`);
   };
 
-  const favorite = '/assets/favorito_02.svg';
+  const favorite = favorites.includes(id)
+    ? '/assets/favorito_01.svg'
+    : '/assets/favorito_02.svg';
 
   return (
     <S.CharactersCardWrapper>
       <Link
-        data-testid={`character-${character.name}`}
-        href={`/characters/${character.id}`}
-        onClick={() => handleClick(character.id)}
+        data-testid={`character-${name}`}
+        href={`/characters/${id}`}
+        onClick={() => handleClick(id)}
       >
         <S.CharactersCardImgWrapper>
           <Image
-            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-            alt={character.name}
+            src={`${thumbnail.path}.${thumbnail.extension}`}
+            alt={name}
             width={150}
             height={150}
             priority
@@ -32,13 +38,21 @@ export const CharactersCard: React.FC<CharacterProps> = ({ character }) => {
       </Link>
       <S.CharactersCardInfoWrapper>
         <Link
-          data-testid={`character-${character.name}`}
-          href={`/characters/${character.id}`}
-          onClick={() => handleClick(character.id)}
+          data-testid={`character-${name}`}
+          href={`/characters/${id}`}
+          onClick={() => handleClick(id)}
         >
-          <S.CharactersCardInfoText>{character.name}</S.CharactersCardInfoText>
+          <S.CharactersCardInfoText>{name}</S.CharactersCardInfoText>
         </Link>
-        <Image src={favorite} alt='favorito' width={15} height={15} priority />
+        <S.FavoriteButton onClick={() => updateFavorite(id)}>
+          <Image
+            src={favorite}
+            alt='favorito'
+            width={15}
+            height={15}
+            priority
+          />
+        </S.FavoriteButton>
       </S.CharactersCardInfoWrapper>
     </S.CharactersCardWrapper>
   );
