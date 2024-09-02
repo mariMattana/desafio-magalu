@@ -74,5 +74,5 @@ export interface CharacterProps {
 
 export type CharacterId = {
   characterId: string;
-  setModifiedDate: (date: Date) => void;
+  setModifiedDate: (date: Date | null) => void;
 };
