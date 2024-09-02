@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect } from 'react';
 import { ComicCard } from '@/components';
 import { ComicsData, CharacterId } from '@/types';
@@ -19,7 +18,12 @@ export const CharacterComics: React.FC<CharacterId> = ({
   useEffect(() => {
     if (!isLoading && data.data?.results) {
       setComicsData(data);
-      setModifiedDate(new Date(data.data.results[0].modified));
+
+      setModifiedDate(
+        data.data?.results?.length > 0
+          ? new Date(data.data.results[0].modified)
+          : null,
+      );
     }
   }, [data, isLoading]);
 

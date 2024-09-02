@@ -12,7 +12,6 @@ export const CharactersSearch: React.FC<SearchInputProps> = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    console.log(value);
     setSearchText(value);
 
     if (onSearch) {

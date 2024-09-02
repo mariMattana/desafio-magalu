@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { CharactersSearch } from '@/components';
 import { CharactersHeadProps } from '@/types';
