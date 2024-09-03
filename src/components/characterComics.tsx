@@ -22,7 +22,7 @@ export const CharacterComics: React.FC<CharacterId> = ({
       setModifiedDate(
         data.data?.results?.length > 0
           ? new Date(data.data.results[0].modified)
-          : null,
+          : '',
       );
     }
   }, [data, isLoading]);

@@ -16,15 +16,22 @@ export const CharacterContent: React.FC<CharacterProps> = ({
     ? '/assets/favorito_01.svg'
     : '/assets/favorito_02.svg';
 
-  const lastComic = modifiedDate
-    ? modifiedDate
-        .toLocaleDateString('pt-BR', {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric',
-        })
-        .replace(/de /g, '')
-    : '';
+  const lastComic = () => {
+    if (modifiedDate) {
+      const date = new Date(modifiedDate);
+
+      if (!isNaN(date.getTime())) {
+        return date
+          .toLocaleDateString('pt-BR', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+          })
+          .replace(/de /g, '');
+      }
+    }
+    return '';
+  };
   return (
     <S.CharacterContentWrapper>
       <S.CharacterContent>
@@ -72,7 +79,7 @@ export const CharacterContent: React.FC<CharacterProps> = ({
             <S.CharacterText>Rating: </S.CharacterText>
             <RatingComponent rating={3} />
           </S.CharacterComicsMovRat>
-          <S.CharacterText>{`Último quadrinho: ${lastComic}`}</S.CharacterText>
+          <S.CharacterText>{`Último quadrinho: ${lastComic()}`}</S.CharacterText>
         </div>
       </S.CharacterContent>
       <S.CharacterImageWrapper>

@@ -1,80 +1,80 @@
 export type CharactersData = {
-  code: 'int';
-  status: 'string';
-  copyright: 'string';
-  attributionText: 'string';
-  attributionHTML: 'string';
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
   data: {
-    offset: 'int';
-    limit: 'int';
-    total: 'int';
-    count: 'int';
+    offset: number;
+    limit: number;
+    total: number;
+    count: number;
     results: [
       {
-        id: 'int';
-        name: 'string';
-        description: 'string';
-        modified: 'Date';
-        resourceURI: 'string';
+        id: string;
+        name: string;
+        description: string;
+        modified: string;
+        resourceURI: string;
         urls: [
           {
-            type: 'string';
-            url: 'string';
+            type: string;
+            url: string;
           },
         ];
         thumbnail: {
-          path: 'string';
-          extension: 'string';
+          path: string;
+          extension: string;
         };
         comics: {
-          available: 'int';
-          returned: 'int';
-          collectionURI: 'string';
+          available: number;
+          returned: number;
+          collectionURI: string;
           items: [
             {
-              resourceURI: 'string';
-              name: 'string';
+              resourceURI: string;
+              name: string;
             },
           ];
         };
         stories: {
-          available: 'int';
-          returned: 'int';
-          collectionURI: 'string';
+          available: number;
+          returned: number;
+          collectionURI: string;
           items: [
             {
-              resourceURI: 'string';
-              name: 'string';
-              type: 'string';
+              resourceURI: string;
+              name: string;
+              type: string;
             },
           ];
         };
         events: {
-          available: 'int';
-          returned: 'int';
-          collectionURI: 'string';
+          available: number;
+          returned: number;
+          collectionURI: string;
           items: [
             {
-              resourceURI: 'string';
-              name: 'string';
+              resourceURI: string;
+              name: string;
             },
           ];
         };
         series: {
-          available: 'int';
-          returned: 'int';
-          collectionURI: 'string';
+          available: number;
+          returned: number;
+          collectionURI: string;
           items: [
             {
-              resourceURI: 'string';
-              name: 'string';
+              resourceURI: string;
+              name: string;
             },
           ];
         };
       },
     ];
   };
-  etag: 'string';
+  etag: string;
 };
 
 export interface CharactersHeadProps {
