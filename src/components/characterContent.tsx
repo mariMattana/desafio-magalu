@@ -12,6 +12,8 @@ export const CharacterContent: React.FC<CharacterProps> = ({
 
   const { favorites, updateFavorite } = useFavorites();
 
+  const rate = 3;
+
   const favorite =
     favorites && favorites.includes(id)
       ? '/assets/favorito_01.svg'
@@ -78,7 +80,7 @@ export const CharacterContent: React.FC<CharacterProps> = ({
           </S.CharacterComicsMovWrapper>
           <S.CharacterComicsMovRat>
             <S.CharacterText>Rating: </S.CharacterText>
-            <RatingComponent rating={3} />
+            <RatingComponent rating={rate} />
           </S.CharacterComicsMovRat>
           <S.CharacterText>{`Último quadrinho: ${lastComic()}`}</S.CharacterText>
         </div>

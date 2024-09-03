@@ -76,3 +76,7 @@ export type CharacterId = {
   characterId: string;
   setModifiedDate: (date: string | Date) => void;
 };
+
+export interface RatingProps {
+  rating: number;
+}

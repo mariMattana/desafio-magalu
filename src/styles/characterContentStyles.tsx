@@ -51,3 +51,9 @@ export const CharacterImageWrapper = styled.div`
 export const CharacterText = styled.p`
   font-size: 14px;
 `;
+
+export const StarImage = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+`;
