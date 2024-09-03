@@ -89,8 +89,13 @@ export const CharacterContent: React.FC<CharacterProps> = ({
         <Image
           src={`${thumbnail.path}.${thumbnail.extension}`}
           alt={character.name}
-          width={500}
-          height={500}
+          layout='responsive'
+          width={700}
+          height={475}
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
           priority
         />
       </S.CharacterImageWrapper>

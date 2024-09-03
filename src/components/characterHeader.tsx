@@ -8,6 +8,7 @@ export const CharacterHead = () => {
       <Image
         src={'/assets/logo_menor.svg'}
         alt='Hero Logo'
+        layout='responsive'
         width={250}
         height={100}
       />

@@ -11,6 +11,9 @@ export const CharactersHeaderSearchWrapper = styled.div<SearchInputProps>`
   gap: 10px;
   border-radius: 50px;
   height: ${(props) => (props.$primary ? '15px' : 'auto')};
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const CharactersHeaderSearchImage = styled.div<SearchInputProps>`

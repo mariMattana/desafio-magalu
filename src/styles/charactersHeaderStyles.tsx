@@ -16,6 +16,7 @@ export const CharactersHeaderTitleWrapper = styled.div`
 `;
 
 export const CharactersHeaderTitle = styled.h1`
+  text-align: center;
   color: #404040;
   margin: 0;
 `;
@@ -39,16 +40,23 @@ export const CharactersHeaderFiltersWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 10px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const CharactersHeaderFoundText = styled.p`
   color: #d1d1d1;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const CharactersHeaderFilters = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: 30px;
 `;
 
@@ -70,6 +78,9 @@ export const CharactersHeaderFiltersImage = styled.button`
 
 export const CharactersHeaderFiltersText = styled.p`
   color: #fc7474;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 export const FavoriteButton = styled.button`
