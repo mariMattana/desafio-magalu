@@ -14,16 +14,13 @@ export const MyStateProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
-    console.log(storedFavorites);
     if (storedFavorites) {
       setFavorites(JSON.parse(storedFavorites));
     }
   }, []);
 
   const updateFavorite = (id: string) => {
-    console.log('clicked');
     setFavorites((prevFavorites) => {
-      console.log(favorites);
       const isFavorite = prevFavorites.includes(id);
       let updatedFavorites: FavoriteType;
 

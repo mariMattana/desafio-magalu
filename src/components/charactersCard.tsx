@@ -15,9 +15,10 @@ export const CharactersCard: React.FC<CharacterProps> = ({ character }) => {
     router.push(`/characters/${id}`);
   };
 
-  const favorite = favorites.includes(id)
-    ? '/assets/favorito_01.svg'
-    : '/assets/favorito_02.svg';
+  const favorite =
+    favorites && favorites.includes(id)
+      ? '/assets/favorito_01.svg'
+      : '/assets/favorito_02.svg';
 
   return (
     <S.CharactersCardWrapper>

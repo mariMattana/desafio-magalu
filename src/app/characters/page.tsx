@@ -28,8 +28,10 @@ const Characters = () => {
 
   const results = charactersData.data?.results || [];
 
+  const favoritesArray = Array.isArray(favorites) ? favorites : [];
+
   const filteredResults = showFavorites
-    ? results.filter((item) => favorites.includes(item.id))
+    ? results.filter((item) => favoritesArray.includes(item.id))
     : results;
 
   useEffect(() => {

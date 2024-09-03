@@ -69,7 +69,7 @@ export type CharacterData = {
 
 export interface CharacterProps {
   character: CharacterData;
-  modifiedDate?: string | '';
+  modifiedDate?: string | Date;
 }
 
 export type CharacterId = {

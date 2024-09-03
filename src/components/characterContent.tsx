@@ -12,9 +12,10 @@ export const CharacterContent: React.FC<CharacterProps> = ({
 
   const { favorites, updateFavorite } = useFavorites();
 
-  const favorite = favorites.includes(id)
-    ? '/assets/favorito_01.svg'
-    : '/assets/favorito_02.svg';
+  const favorite =
+    favorites && favorites.includes(id)
+      ? '/assets/favorito_01.svg'
+      : '/assets/favorito_02.svg';
 
   const lastComic = () => {
     if (modifiedDate) {

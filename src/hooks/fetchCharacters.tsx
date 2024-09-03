@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-type RequestStatus = 'idle' | 'fetching' | 'fetched' | 'error';
+import { RequestStatus } from '@/types';
 
 function useFetchData<T>(url: string) {
   const [data, setData] = useState<Partial<T>>({});

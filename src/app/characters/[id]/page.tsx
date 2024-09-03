@@ -14,7 +14,7 @@ const Character = ({ params }: CharacterIdProps) => {
   const [charactersData, setCharactersData] = useState<Partial<CharactersData>>(
     {},
   );
-  const [modifiedDate, setModifiedDate] = useState<Date | null>(null);
+  const [modifiedDate, setModifiedDate] = useState<string | Date>('');
 
   useEffect(() => {
     if (!isLoading && data.data?.results) {
